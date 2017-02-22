@@ -13,6 +13,10 @@ namespace ProximityCounter
             HelpText = "The data rate in bits to use for communicating with the device.")]
         public int BaudRate { get; set; }
 
+        [Option('d', "distance", Required = false, DefaultValue = 13,
+            HelpText = "The maximum distance on which to detect movement.")]
+        public int MaximumDistance { get; set; }
+
         [HelpOption]
         public string GetUsage()
         {
