@@ -17,6 +17,14 @@ namespace ProximityCounter
             HelpText = "The maximum distance on which to detect movement.")]
         public int MaximumDistance { get; set; }
 
+        [Option('s', "sensitivity", Required = false, DefaultValue = 1000,
+            HelpText = "The minimum amount of time in milliseconds inbetween two vehicles passing by.")]
+        public int Sensitivity { get; set; }
+
+        [Option('v', "vehicle", Required = true,
+           HelpText = "Id of the vehicle that will pass.")]
+        public int VehicleId { get; set; }
+
         [HelpOption]
         public string GetUsage()
         {
