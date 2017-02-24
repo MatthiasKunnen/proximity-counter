@@ -41,7 +41,17 @@ namespace ProximityCounter
             var lastTrigger = DateTime.Now.AddMilliseconds(-options.Sensitivity);
             while (true)
             {
-                var distance = int.Parse(port.ReadLine());
+                var input = port.ReadLine();
+                int distance;
+                try
+                {
+                    distance = int.Parse(input);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Input: \"{0}\" rejected. Not an integer.", input);
+                    continue;
+                }
                 if (distance > options.MaximumDistance
                     || lastTrigger.AddMilliseconds(options.Sensitivity) > DateTime.Now) continue;
 
