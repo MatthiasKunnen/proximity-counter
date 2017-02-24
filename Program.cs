@@ -44,7 +44,12 @@ namespace ProximityCounter
                 var distance = int.Parse(port.ReadLine());
                 if (distance > options.MaximumDistance
                     || lastTrigger.AddMilliseconds(options.Sensitivity) > DateTime.Now) continue;
+
+                Console.WriteLine("Vehicle drive by detected.");
                 lastTrigger = DateTime.Now;
+
+                if (options.Test) continue;
+
                 Task.Run(() => JsonConveyor.Post("https://sd4u.be/en-GB/ip-project/api/",
                     new KeyValuePair<string, string>("action", "vehicle_arriving"),
                     new KeyValuePair<string, string>("vehicleId", options.VehicleId.ToString()),

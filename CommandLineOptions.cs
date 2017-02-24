@@ -25,6 +25,10 @@ namespace ProximityCounter
             HelpText = "The ID of the stop which the system is watching.")]
         public int StopId { get; set; }
 
+        [Option('t', "test", DefaultValue = false,
+            HelpText = "Include this parameter to skip sending data to the server.")]
+        public bool Test { get; set; }
+
         [Option('v', "vehicle", Required = true,
            HelpText = "Id of the vehicle that will pass.")]
         public int VehicleId { get; set; }
